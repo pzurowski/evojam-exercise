@@ -1,0 +1,111 @@
+@mixin evojam-dashboard-panel-icon($type,$url) {
+  .evojam-dashboard-panel-#{$type} {
+    .evojam-icon:after {
+      background-image: url($url);
+    }
+  }
+}
+
+@mixin evojam-fill-layer($offset-top: 0, $offset-right: $offset-top, $offset-bottom: $offset-top, $offset-left: $offset-right) {
+  position: absolute;
+  top: $offset-top;
+  bottom: $offset-bottom;
+  left: $offset-left;
+  right: $offset-right;
+
+}
+
+@include evojam-dashboard-panel-icon('installations', 'data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xOSA5aC00VjNIOXY2SDVsNyA3IDctN3pNNSAxOHYyaDE0di0ySDV6Ii8+CiAgICA8cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+Cjwvc3ZnPg==');
+@include evojam-dashboard-panel-icon('revenue', 'data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMS44IDEwLjljLTIuMjctLjU5LTMtMS4yLTMtMi4xNSAwLTEuMDkgMS4wMS0xLjg1IDIuNy0xLjg1IDEuNzggMCAyLjQ0Ljg1IDIuNSAyLjFoMi4yMWMtLjA3LTEuNzItMS4xMi0zLjMtMy4yMS0zLjgxVjNoLTN2Mi4xNmMtMS45NC40Mi0zLjUgMS42OC0zLjUgMy42MSAwIDIuMzEgMS45MSAzLjQ2IDQuNyA0LjEzIDIuNS42IDMgMS40OCAzIDIuNDEgMCAuNjktLjQ5IDEuNzktMi43IDEuNzktMi4wNiAwLTIuODctLjkyLTIuOTgtMi4xaC0yLjJjLjEyIDIuMTkgMS43NiAzLjQyIDMuNjggMy44M1YyMWgzdi0yLjE1YzEuOTUtLjM3IDMuNS0xLjUgMy41LTMuNTUgMC0yLjg0LTIuNDMtMy44MS00LjctNC40eiIvPgogICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4=');
+
+.evojam-dashboard-panel {
+  $evojam-box-size: $font-size-base * 2.5;
+  $evojam-border-radius: 4px;
+  $evojam-icon-padding: 2px;
+  $evojam-icon-border: 3px;
+  $evojam-glow-effect-offset: 1px;
+
+  .evojam-icon {
+    @include box-shadow(0 1px 1px rgba(0, 0, 0, .05));
+    @include gradient-vertical($start-color: #fff, $end-color: $panel-default-heading-bg);
+    width: $evojam-box-size;
+    height: $evojam-box-size;
+    line-height: $evojam-box-size;
+    text-align: center;
+    float: left;
+    border: 1px solid $panel-default-border;
+    border-radius: $evojam-border-radius;
+    margin-top: - $font-size-base * 1.5;
+    margin-right: $panel-body-padding;
+    position: relative;
+    z-index: 1;
+
+    &:before {
+      @include evojam-fill-layer(- $evojam-icon-border);
+      content: " ";
+      border: ($evojam-icon-border - 1px) solid white;
+      padding: ($evojam-icon-border - 1px);
+      z-index: 2;
+      border-radius: $evojam-border-radius+ $evojam-icon-border;
+      box-shadow: 0 0 2px 1px $panel-default-border;
+    }
+    &:after {
+      @include evojam-fill-layer($evojam-icon-padding);
+      content: " ";
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  .evojam-type-currency {
+    &:before {
+      content: '$';
+      font-size: 0.75em;
+      vertical-align: text-top;
+      color: $brand-primary;
+    }
+  }
+  h2 {
+    text-align: right;
+    margin-bottom: 100px;
+    font-size: 250%;
+    font-weight: 700;
+    small {
+      display: block;
+      font-size: 35%;
+      font-weight: 500;
+    }
+  }
+  button {
+    // colors should be extracted to config file
+    @include gradient-vertical($start-color: #B5E1F8, $end-color: #046C8A);
+    border-radius: $evojam-border-radius + $evojam-glow-effect-offset + 1px;
+    position: relative;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 3px 0 #999;
+
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 400;
+
+    &,
+    &:active,
+    &.active {
+      &:focus,
+      &.focus {
+        outline: none;
+      }
+    }
+
+    &:before {
+      @include border-top-radius($evojam-border-radius + $evojam-glow-effect-offset + 1px);
+      @include evojam-fill-layer($evojam-glow-effect-offset, $evojam-glow-effect-offset, auto);
+      content: " ";
+      border: 1px solid #fff;
+      border-bottom: 0;
+      height: $evojam-glow-effect-offset + 3px;
+    }
+  }
+}
+
+

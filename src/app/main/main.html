@@ -4,6 +4,74 @@
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
 
+  <div class="row">
+    <div class="col-md-4">
+      <h1>Evojam exercise</h1>
+      <ul>
+        <li>Exercise solution
+          <ul>
+            <li><strong>dashboard-panel directive</strong> - encapsulate single panel</li>
+            <li><strong>data-source service</strong> - facade for data feeds, here trivial</li>
+            <li><strong>main.html</strong> - starting point</li>
+          </ul>
+        </li>
+        <li>How to run?
+          <ol>
+            <li><code>$ npm install</code></li>
+            <li><code>$ bower install</code></li>
+            <li><code>$ gulp serve</code></li>
+          </ol>
+        </li>
+        <li>Used technologies and why
+          <dl class="dl-horizontal">
+            <dt>Angular</dt>
+            <dd>A system in which they are dashboards, is usually large. A large system is easier to develop and easier
+              to maintain using the appropriate framework.
+            </dd>
+            <dt>angular-chart.js</dt>
+            <dd>One of two most starred charts angular module on GitHub</dd>
+            <dt>ES2015</dt>
+            <dd>Cutting edge JS version</dd>
+            <dt>Sass</dt>
+            <dd>Variables, mixins, functions, code organization</dd>
+            <dt>Twitter Bootstrap</dt>
+            <dd>Everybody knows it</dd>
+            <dt>Yeoman</dt>
+            <dd>Fast bootstrap skeleton app</dd>
+          </dl>
+        </li>
+        <li>Used images (inlined in .css)
+          <ul>
+            <li>
+              <a href="https://design.google.com/icons/#ic_file_download">
+                https://design.google.com/icons/#ic_file_download
+              </a>
+            </li>
+            <li>
+              <a href="https://design.google.com/icons/#ic_attach_money">
+                https://design.google.com/icons/#ic_attach_money
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>Compatibility
+          <ul>
+            <li><strong>Chrome</strong> - ok</li>
+            <li><strong>IE</strong> - not checked</li>
+            <li><strong>Firefox</strong> - not checked</li>
+            <li><strong>Edge</strong> - not checked</li>
+            <li><strong>Safari</strong> - not checked</li>
+            <li><strong>Mobile browsers</strong> - not checked</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-8">
+      <evojam-dashboard-panel type="revenue"></evojam-dashboard-panel>
+      <evojam-dashboard-panel type="installations"></evojam-dashboard-panel>
+    </div>
+  </div>
+
   <div class="jumbotron text-center">
     <h1>'Allo, 'Allo!</h1>
     <p class="lead">

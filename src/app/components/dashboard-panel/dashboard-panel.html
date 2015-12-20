@@ -1,0 +1,36 @@
+<div class="panel panel-default evojam-dashboard-panel"
+     ng-class="'evojam-dashboard-panel-' + vm.type">
+  <header class="panel-heading">
+    <div class="evojam-icon"></div>
+    {{ ::vm.data.title }}
+  </header>
+  <main class="panel-body">
+    <div class="row">
+      <div class="col-sm-9">
+        <!-- ng-class with 'chart-'+type doesn't work -->
+        <canvas class="chart chart-bar"
+                ng-if="vm.data.chart.type === 'bar'"
+                height="100"
+                chart-data="vm.data.chart.data"
+                chart-options="vm.chartOptions"
+                chart-labels="vm.data.chart.labels"
+                chart-legend="true"
+                chart-series="vm.data.chart.series"></canvas>
+        <canvas class="chart chart-line"
+                ng-if="vm.data.chart.type === 'line'"
+                height="100"
+                chart-data="vm.data.chart.data"
+                chart-options="vm.chartOptions"
+                chart-labels="vm.data.chart.labels"
+                chart-legend="true"
+                chart-series="vm.data.chart.series"></canvas>
+      </div>
+      <div class="col-sm-3">
+        <h2 ng-class="'evojam-type-' + vm.data.kpiType">{{ vm.data.kpi | number }}
+          <small>{{ ::vm.data.description }}</small>
+        </h2>
+        <button class="btn btn-block">{{ ::vm.data.cta }}</button>
+      </div>
+    </div>
+  </main>
+</div>
